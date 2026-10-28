@@ -1,0 +1,1133 @@
+{
+  "id": "4b0f4cdc-579b-4c3d-9515-6ea54de65004",
+  "revision": 0,
+  "last_node_id": 16,
+  "last_link_id": 15,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        0,
+        0
+      ],
+      "size": [
+        320,
+        380
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "choose file to upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2,
+            6
+          ]
+        },
+        {
+          "localized_name": "MASK",
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "hi3d_example.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "hi3d_example.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 2,
+      "type": "LoadBackgroundRemovalModel",
+      "pos": [
+        0,
+        440
+      ],
+      "size": [
+        321.6919921875,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "bg_removal_name",
+          "name": "bg_removal_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "bg_removal_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "bg_model",
+          "name": "bg_model",
+          "type": "BACKGROUND_REMOVAL",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadBackgroundRemovalModel"
+      },
+      "widgets_values": [
+        "birefnet.safetensors"
+      ],
+      "widgets_values_named": {
+        "bg_removal_name": "birefnet.safetensors"
+      }
+    },
+    {
+      "id": 3,
+      "type": "RemoveBackground",
+      "pos": [
+        0,
+        560
+      ],
+      "size": [
+        181.705078125,
+        46
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "bg_removal_model",
+          "name": "bg_removal_model",
+          "type": "BACKGROUND_REMOVAL",
+          "link": 1
+        },
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RemoveBackground"
+      }
+    },
+    {
+      "id": 4,
+      "type": "Load3DAdvanced",
+      "pos": [
+        0,
+        700
+      ],
+      "size": [
+        360,
+        560
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model_file",
+          "name": "model_file",
+          "type": "COMBO",
+          "widget": {
+            "name": "model_file"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "viewport_state",
+          "name": "viewport_state",
+          "type": "LOAD_3D_ADVANCED",
+          "widget": {
+            "name": "viewport_state"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model_3d",
+          "name": "model_3d",
+          "type": "FILE_3D",
+          "links": [
+            3
+          ]
+        },
+        {
+          "localized_name": "model_3d_info",
+          "name": "model_3d_info",
+          "type": "LOAD3D_MODEL_INFO",
+          "links": null
+        },
+        {
+          "localized_name": "camera_info",
+          "name": "camera_info",
+          "type": "LOAD3D_CAMERA",
+          "links": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Load3DAdvanced"
+      },
+      "widgets_values": [
+        "none",
+        "",
+        1024,
+        1024
+      ],
+      "widgets_values_named": {
+        "model_file": "none",
+        "viewport_state": "",
+        "width": 1024,
+        "height": 1024
+      }
+    },
+    {
+      "id": 5,
+      "type": "Get3DComponents",
+      "pos": [
+        400,
+        700
+      ],
+      "size": [
+        174.103125,
+        26
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model_3d",
+          "name": "model_3d",
+          "type": "FILE_3D_GLB,FILE_3D_GLTF,FILE_3D_OBJ,FILE_3D_STL,FILE_3D",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "mesh",
+          "name": "mesh",
+          "type": "MESH",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Get3DComponents"
+      }
+    },
+    {
+      "id": 6,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        400,
+        0
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CLIP_VISION",
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "title": "Load CLIP Vision (DINOv2-large)",
+      "properties": {
+        "Node name for S&R": "CLIPVisionLoader"
+      },
+      "widgets_values": [
+        "dinov2-large/model.safetensors"
+      ],
+      "widgets_values_named": {
+        "clip_name": "dinov2-large/model.safetensors"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 7,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        400,
+        120
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CLIP_VISION",
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "title": "Load CLIP Vision (CLIP ViT-L/14)",
+      "properties": {
+        "Node name for S&R": "CLIPVisionLoader"
+      },
+      "widgets_values": [
+        "clip-vit-large-patch14/model.safetensors"
+      ],
+      "widgets_values_named": {
+        "clip_name": "clip-vit-large-patch14/model.safetensors"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 8,
+      "type": "Hi3DConditioning",
+      "pos": [
+        780,
+        0
+      ],
+      "size": [
+        191.314453125,
+        86
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "dino_model",
+          "name": "dino_model",
+          "type": "CLIP_VISION",
+          "link": 4
+        },
+        {
+          "localized_name": "clip_model",
+          "name": "clip_model",
+          "type": "CLIP_VISION",
+          "link": 5
+        },
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 6
+        },
+        {
+          "localized_name": "mask",
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "conditioning",
+          "name": "conditioning",
+          "type": "HI3D_CONDITIONING",
+          "links": [
+            11
+          ]
+        },
+        {
+          "localized_name": "framed_image",
+          "name": "framed_image",
+          "type": "IMAGE",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Hi3DConditioning"
+      }
+    },
+    {
+      "id": 9,
+      "type": "PreviewImage",
+      "pos": [
+        780,
+        170
+      ],
+      "size": [
+        300,
+        300
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "title": "Hi3D framed image",
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 10,
+      "type": "Hi3DTransformerLoader",
+      "pos": [
+        400,
+        260
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "transformer_name",
+          "name": "transformer_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "transformer_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "transformer",
+          "name": "transformer",
+          "type": "HI3D_TRANSFORMER",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Hi3DTransformerLoader"
+      },
+      "widgets_values": [
+        "hi3d/transformer_512/model.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "transformer_name": "hi3d/transformer_512/model.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 11,
+      "type": "Hi3DTransformerLoader",
+      "pos": [
+        400,
+        400
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "transformer_name",
+          "name": "transformer_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "transformer_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "transformer",
+          "name": "transformer",
+          "type": "HI3D_TRANSFORMER",
+          "links": [
+            13
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Hi3DTransformerLoader"
+      },
+      "widgets_values": [
+        "hi3d/transformer_1024/model.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "transformer_name": "hi3d/transformer_1024/model.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 12,
+      "type": "Hi3DVAELoader",
+      "pos": [
+        400,
+        540
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "dtype",
+          "name": "dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "dtype"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "HI3D_VAE",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Hi3DVAELoader"
+      },
+      "widgets_values": [
+        "hi3d/model.safetensors",
+        "fp32"
+      ],
+      "widgets_values_named": {
+        "vae_name": "hi3d/model.safetensors",
+        "dtype": "fp32"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 13,
+      "type": "Hi3DRefineMesh",
+      "pos": [
+        1160,
+        0
+      ],
+      "size": [
+        380,
+        330
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "transformer_512",
+          "name": "transformer_512",
+          "type": "HI3D_TRANSFORMER",
+          "link": 9
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "HI3D_VAE",
+          "link": 10
+        },
+        {
+          "localized_name": "conditioning",
+          "name": "conditioning",
+          "type": "HI3D_CONDITIONING",
+          "link": 11
+        },
+        {
+          "localized_name": "mesh",
+          "name": "mesh",
+          "type": "MESH",
+          "link": 12
+        },
+        {
+          "localized_name": "transformer_1024",
+          "name": "transformer_1024",
+          "shape": 7,
+          "type": "HI3D_TRANSFORMER",
+          "link": 13
+        },
+        {
+          "localized_name": "resolution",
+          "name": "resolution",
+          "type": "COMBO",
+          "widget": {
+            "name": "resolution"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "coarse_mesh_axes",
+          "name": "coarse_mesh_axes",
+          "type": "COMBO",
+          "widget": {
+            "name": "coarse_mesh_axes"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "output_frame",
+          "name": "output_frame",
+          "type": "COMBO",
+          "widget": {
+            "name": "output_frame"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "target_faces",
+          "name": "target_faces",
+          "type": "INT",
+          "widget": {
+            "name": "target_faces"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "remove_debris",
+          "name": "remove_debris",
+          "type": "FLOAT",
+          "widget": {
+            "name": "remove_debris"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "mesh",
+          "name": "mesh",
+          "type": "MESH",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Hi3DRefineMesh"
+      },
+      "widgets_values": [
+        "1024",
+        25,
+        0,
+        "fixed",
+        "Y-up (glTF, Trellis2, Pixal3D, Load 3D)",
+        "match input",
+        -1,
+        0.005,
+        "heun"
+      ],
+      "widgets_values_named": {
+        "resolution": "1024",
+        "steps": 25,
+        "seed": 0,
+        "control_after_generate": "fixed",
+        "coarse_mesh_axes": "Y-up (glTF, Trellis2, Pixal3D, Load 3D)",
+        "output_frame": "match input",
+        "target_faces": -1,
+        "remove_debris": 0.005,
+        "scheduler": "heun"
+      }
+    },
+    {
+      "id": 14,
+      "type": "MeshToFile3D",
+      "pos": [
+        1580,
+        0
+      ],
+      "size": [
+        219.206640625,
+        26
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "mesh",
+          "name": "mesh",
+          "type": "MESH",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model_3d",
+          "name": "model_3d",
+          "type": "FILE_3D_GLB",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MeshToFile3D"
+      }
+    },
+    {
+      "id": 15,
+      "type": "Save3DAdvanced",
+      "pos": [
+        1580,
+        80
+      ],
+      "size": [
+        700,
+        700
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model_3d",
+          "name": "model_3d",
+          "type": "FILE_3D_GLB,FILE_3D_GLTF,FILE_3D_FBX,FILE_3D_OBJ,FILE_3D_STL,FILE_3D_USDZ,FILE_3D",
+          "link": 15
+        },
+        {
+          "localized_name": "model_3d_info",
+          "name": "model_3d_info",
+          "shape": 7,
+          "type": "LOAD3D_MODEL_INFO",
+          "link": null
+        },
+        {
+          "localized_name": "camera_info",
+          "name": "camera_info",
+          "shape": 7,
+          "type": "LOAD3D_CAMERA",
+          "link": null
+        },
+        {
+          "localized_name": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "viewport_state",
+          "name": "viewport_state",
+          "type": "LOAD_3D",
+          "widget": {
+            "name": "viewport_state"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model_3d",
+          "name": "model_3d",
+          "type": "FILE_3D",
+          "links": null
+        },
+        {
+          "localized_name": "model_3d_info",
+          "name": "model_3d_info",
+          "type": "LOAD3D_MODEL_INFO",
+          "links": null
+        },
+        {
+          "localized_name": "camera_info",
+          "name": "camera_info",
+          "type": "LOAD3D_CAMERA",
+          "links": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "3d/Hi3D",
+        "",
+        1024,
+        1024
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "3d/Hi3D",
+        "viewport_state": "",
+        "width": 1024,
+        "height": 1024
+      }
+    },
+    {
+      "id": 16,
+      "type": "MarkdownNote",
+      "pos": [
+        400,
+        820
+      ],
+      "size": [
+        700,
+        460
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## Hi3D models (download them yourself)\n\n| File | Folder |\n| --- | --- |\n| Hi3D `transformer_512/model.safetensors` + `config.json` | `models/diffusion_models/hi3d/transformer_512/` |\n| Hi3D `transformer_1024/model.safetensors` + `config.json` | `models/diffusion_models/hi3d/transformer_1024/` |\n| Hi3D `vae/model.safetensors` + `config.json` | `models/vae/hi3d/` |\n| DINOv2-large `model.safetensors` (facebook/dinov2-large) | `models/clip_vision/dinov2-large/` |\n| CLIP ViT-L/14 `model.safetensors` (openai/clip-vit-large-patch14) | `models/clip_vision/clip-vit-large-patch14/` |\n\nHi3D files: https://huggingface.co/hi3d-official/Hi3Dv1.0 (Hi3D Open License 1.0).\nAny folder and file name works; pick the files in the loaders.\n\n**Resolution**: 512 = 1 pass, 1024 = 2 passes (default), 1536 = 3 passes (data-center GPUs).\nUse fp8 weight_dtype on the transformer loaders to save VRAM.\n\nUpload your coarse mesh in **Load 3D (Advanced)** (GLB/OBJ/STL). It must be the same object as the image."
+      ],
+      "widgets_values_named": {
+        "text": "## Hi3D models (download them yourself)\n\n| File | Folder |\n| --- | --- |\n| Hi3D `transformer_512/model.safetensors` + `config.json` | `models/diffusion_models/hi3d/transformer_512/` |\n| Hi3D `transformer_1024/model.safetensors` + `config.json` | `models/diffusion_models/hi3d/transformer_1024/` |\n| Hi3D `vae/model.safetensors` + `config.json` | `models/vae/hi3d/` |\n| DINOv2-large `model.safetensors` (facebook/dinov2-large) | `models/clip_vision/dinov2-large/` |\n| CLIP ViT-L/14 `model.safetensors` (openai/clip-vit-large-patch14) | `models/clip_vision/clip-vit-large-patch14/` |\n\nHi3D files: https://huggingface.co/hi3d-official/Hi3Dv1.0 (Hi3D Open License 1.0).\nAny folder and file name works; pick the files in the loaders.\n\n**Resolution**: 512 = 1 pass, 1024 = 2 passes (default), 1536 = 3 passes (data-center GPUs).\nUse fp8 weight_dtype on the transformer loaders to save VRAM.\n\nUpload your coarse mesh in **Load 3D (Advanced)** (GLB/OBJ/STL). It must be the same object as the image."
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      3,
+      0,
+      "BACKGROUND_REMOVAL"
+    ],
+    [
+      2,
+      1,
+      0,
+      3,
+      1,
+      "IMAGE"
+    ],
+    [
+      3,
+      4,
+      0,
+      5,
+      0,
+      "FILE_3D"
+    ],
+    [
+      4,
+      6,
+      0,
+      8,
+      0,
+      "CLIP_VISION"
+    ],
+    [
+      5,
+      7,
+      0,
+      8,
+      1,
+      "CLIP_VISION"
+    ],
+    [
+      6,
+      1,
+      0,
+      8,
+      2,
+      "IMAGE"
+    ],
+    [
+      7,
+      3,
+      0,
+      8,
+      3,
+      "MASK"
+    ],
+    [
+      8,
+      8,
+      1,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      9,
+      10,
+      0,
+      13,
+      0,
+      "HI3D_TRANSFORMER"
+    ],
+    [
+      10,
+      12,
+      0,
+      13,
+      1,
+      "HI3D_VAE"
+    ],
+    [
+      11,
+      8,
+      0,
+      13,
+      2,
+      "HI3D_CONDITIONING"
+    ],
+    [
+      12,
+      5,
+      0,
+      13,
+      3,
+      "MESH"
+    ],
+    [
+      13,
+      11,
+      0,
+      13,
+      4,
+      "HI3D_TRANSFORMER"
+    ],
+    [
+      14,
+      13,
+      0,
+      14,
+      0,
+      "MESH"
+    ],
+    [
+      15,
+      14,
+      0,
+      15,
+      0,
+      "FILE_3D_GLB"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9,
+      "offset": [
+        416,
+        110
+      ]
+    }
+  },
+  "version": 0.4
+}

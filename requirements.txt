@@ -1,0 +1,4 @@
+# torch, numpy, scipy, Pillow and safetensors are provided by ComfyUI.
+# pyfqmr simplifies the refined mesh to the release's face budget; without it the
+# full-resolution mesh is returned.
+pyfqmr>=0.4.0
