@@ -1,0 +1,2330 @@
+{
+  "id": "81ccfe3e-3540-49e3-88ae-4fde173b8c87",
+  "revision": 0,
+  "last_node_id": 106,
+  "last_link_id": 210,
+  "nodes": [
+    {
+      "id": 56,
+      "type": "LoadImage",
+      "pos": [
+        -350,
+        60
+      ],
+      "size": [
+        370,
+        340
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "choose file to upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            180,
+            196,
+            201
+          ]
+        },
+        {
+          "label": "MASK",
+          "localized_name": "MASK",
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43"
+      },
+      "widgets_values": [
+        "3d_hunyuan3d_image_to_model_input_image.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "3d_hunyuan3d_image_to_model_input_image.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 91,
+      "type": "d6c8fbe5-c16d-4062-bbce-4d3c0249bc10",
+      "pos": [
+        70,
+        60
+      ],
+      "size": [
+        420,
+        400
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 180
+        },
+        {
+          "label": "model_shift",
+          "name": "shift",
+          "type": "FLOAT",
+          "widget": {
+            "name": "shift"
+          },
+          "link": null
+        },
+        {
+          "label": "model_sampling",
+          "name": "sampling",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "sampling"
+          },
+          "link": null
+        },
+        {
+          "label": "latent_resolution",
+          "name": "resolution",
+          "type": "INT",
+          "widget": {
+            "name": "resolution"
+          },
+          "link": null
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": null
+        },
+        {
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          },
+          "link": null
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": null
+        },
+        {
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          },
+          "link": null
+        },
+        {
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          },
+          "link": null
+        },
+        {
+          "label": "voxel_to_mesh_algorithm",
+          "name": "algorithm",
+          "type": "COMBO",
+          "widget": {
+            "name": "algorithm"
+          },
+          "link": null
+        },
+        {
+          "label": "voxel_to_mesh_threshold",
+          "name": "threshold",
+          "type": "FLOAT",
+          "widget": {
+            "name": "threshold"
+          },
+          "link": null
+        },
+        {
+          "name": "ckpt_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "ckpt_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MESH",
+          "name": "MESH",
+          "type": "MESH",
+          "links": [
+            197,
+            207
+          ]
+        }
+      ],
+      "properties": {
+        "previewExposures": [
+          {
+            "name": "$$canvas-image-preview",
+            "sourceNodeId": "3",
+            "sourcePreviewName": "$$canvas-image-preview"
+          }
+        ]
+      },
+      "widgets_values": [
+        1,
+        "flow",
+        3072,
+        20,
+        8,
+        242832339647017,
+        "euler",
+        "normal",
+        "surface net",
+        0.6,
+        "hunyuan3d-dit-v2_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "shift": 1,
+        "sampling": "flow",
+        "resolution": 3072,
+        "steps": 20,
+        "cfg": 8,
+        "seed": 242832339647017,
+        "sampler_name": "euler",
+        "scheduler": "normal",
+        "algorithm": "surface net",
+        "threshold": 0.6,
+        "ckpt_name": "hunyuan3d-dit-v2_fp16.safetensors"
+      }
+    },
+    {
+      "id": 92,
+      "type": "LoadBackgroundRemovalModel",
+      "pos": [
+        -350,
+        460
+      ],
+      "size": [
+        321.6919921875,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "bg_removal_name",
+          "name": "bg_removal_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "bg_removal_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "bg_model",
+          "name": "bg_model",
+          "type": "BACKGROUND_REMOVAL",
+          "links": [
+            195
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadBackgroundRemovalModel"
+      },
+      "widgets_values": [
+        "birefnet.safetensors"
+      ],
+      "widgets_values_named": {
+        "bg_removal_name": "birefnet.safetensors"
+      }
+    },
+    {
+      "id": 93,
+      "type": "RemoveBackground",
+      "pos": [
+        -350,
+        580
+      ],
+      "size": [
+        181.705078125,
+        46
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "bg_removal_model",
+          "name": "bg_removal_model",
+          "type": "BACKGROUND_REMOVAL",
+          "link": 195
+        },
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 196
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            202
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RemoveBackground"
+      }
+    },
+    {
+      "id": 94,
+      "type": "MeshToFile3D",
+      "pos": [
+        70,
+        520
+      ],
+      "size": [
+        219.206640625,
+        26
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "mesh",
+          "name": "mesh",
+          "type": "MESH",
+          "link": 197
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model_3d",
+          "name": "model_3d",
+          "type": "FILE_3D_GLB",
+          "links": [
+            198
+          ]
+        }
+      ],
+      "title": "Coarse mesh (Hunyuan3D)",
+      "properties": {
+        "Node name for S&R": "MeshToFile3D"
+      }
+    },
+    {
+      "id": 95,
+      "type": "Preview3DAdvanced",
+      "pos": [
+        70,
+        600
+      ],
+      "size": [
+        500,
+        500
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model_3d",
+          "name": "model_3d",
+          "type": "FILE_3D_GLB,FILE_3D_GLTF,FILE_3D_FBX,FILE_3D_OBJ,FILE_3D_STL,FILE_3D_USDZ,FILE_3D",
+          "link": 198
+        },
+        {
+          "localized_name": "model_3d_info",
+          "name": "model_3d_info",
+          "shape": 7,
+          "type": "LOAD3D_MODEL_INFO",
+          "link": null
+        },
+        {
+          "localized_name": "camera_info",
+          "name": "camera_info",
+          "shape": 7,
+          "type": "LOAD3D_CAMERA",
+          "link": null
+        },
+        {
+          "localized_name": "viewport_state",
+          "name": "viewport_state",
+          "type": "LOAD_3D",
+          "widget": {
+            "name": "viewport_state"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model_3d",
+          "name": "model_3d",
+          "type": "FILE_3D",
+          "links": null
+        },
+        {
+          "localized_name": "model_3d_info",
+          "name": "model_3d_info",
+          "type": "LOAD3D_MODEL_INFO",
+          "links": null
+        },
+        {
+          "localized_name": "camera_info",
+          "name": "camera_info",
+          "type": "LOAD3D_CAMERA",
+          "links": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Preview3DAdvanced"
+      },
+      "widgets_values": [
+        "",
+        1024,
+        1024
+      ],
+      "widgets_values_named": {
+        "viewport_state": "",
+        "width": 1024,
+        "height": 1024
+      }
+    },
+    {
+      "id": 96,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        620,
+        60
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CLIP_VISION",
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "links": [
+            199
+          ]
+        }
+      ],
+      "title": "Load CLIP Vision (DINOv2-large)",
+      "properties": {
+        "Node name for S&R": "CLIPVisionLoader"
+      },
+      "widgets_values": [
+        "dinov2-large/model.safetensors"
+      ],
+      "widgets_values_named": {
+        "clip_name": "dinov2-large/model.safetensors"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 97,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        620,
+        180
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CLIP_VISION",
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "links": [
+            200
+          ]
+        }
+      ],
+      "title": "Load CLIP Vision (CLIP ViT-L/14)",
+      "properties": {
+        "Node name for S&R": "CLIPVisionLoader"
+      },
+      "widgets_values": [
+        "clip-vit-large-patch14/model.safetensors"
+      ],
+      "widgets_values_named": {
+        "clip_name": "clip-vit-large-patch14/model.safetensors"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 98,
+      "type": "Hi3DConditioning",
+      "pos": [
+        1000,
+        60
+      ],
+      "size": [
+        191.314453125,
+        86
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "dino_model",
+          "name": "dino_model",
+          "type": "CLIP_VISION",
+          "link": 199
+        },
+        {
+          "localized_name": "clip_model",
+          "name": "clip_model",
+          "type": "CLIP_VISION",
+          "link": 200
+        },
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 201
+        },
+        {
+          "localized_name": "mask",
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 202
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "conditioning",
+          "name": "conditioning",
+          "type": "HI3D_CONDITIONING",
+          "links": [
+            206
+          ]
+        },
+        {
+          "localized_name": "framed_image",
+          "name": "framed_image",
+          "type": "IMAGE",
+          "links": [
+            203
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Hi3DConditioning"
+      }
+    },
+    {
+      "id": 99,
+      "type": "PreviewImage",
+      "pos": [
+        1000,
+        230
+      ],
+      "size": [
+        300,
+        300
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 203
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "title": "Hi3D framed image",
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 100,
+      "type": "Hi3DTransformerLoader",
+      "pos": [
+        620,
+        320
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "transformer_name",
+          "name": "transformer_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "transformer_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "transformer",
+          "name": "transformer",
+          "type": "HI3D_TRANSFORMER",
+          "links": [
+            204
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Hi3DTransformerLoader"
+      },
+      "widgets_values": [
+        "hi3d/transformer_512/model.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "transformer_name": "hi3d/transformer_512/model.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 101,
+      "type": "Hi3DTransformerLoader",
+      "pos": [
+        620,
+        460
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "transformer_name",
+          "name": "transformer_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "transformer_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "transformer",
+          "name": "transformer",
+          "type": "HI3D_TRANSFORMER",
+          "links": [
+            208
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Hi3DTransformerLoader"
+      },
+      "widgets_values": [
+        "hi3d/transformer_1024/model.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "transformer_name": "hi3d/transformer_1024/model.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 102,
+      "type": "Hi3DVAELoader",
+      "pos": [
+        620,
+        600
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "dtype",
+          "name": "dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "dtype"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "HI3D_VAE",
+          "links": [
+            205
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Hi3DVAELoader"
+      },
+      "widgets_values": [
+        "hi3d/model.safetensors",
+        "fp32"
+      ],
+      "widgets_values_named": {
+        "vae_name": "hi3d/model.safetensors",
+        "dtype": "fp32"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 103,
+      "type": "Hi3DRefineMesh",
+      "pos": [
+        1380,
+        60
+      ],
+      "size": [
+        380,
+        330
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "transformer_512",
+          "name": "transformer_512",
+          "type": "HI3D_TRANSFORMER",
+          "link": 204
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "HI3D_VAE",
+          "link": 205
+        },
+        {
+          "localized_name": "conditioning",
+          "name": "conditioning",
+          "type": "HI3D_CONDITIONING",
+          "link": 206
+        },
+        {
+          "localized_name": "mesh",
+          "name": "mesh",
+          "type": "MESH",
+          "link": 207
+        },
+        {
+          "localized_name": "transformer_1024",
+          "name": "transformer_1024",
+          "shape": 7,
+          "type": "HI3D_TRANSFORMER",
+          "link": 208
+        },
+        {
+          "localized_name": "resolution",
+          "name": "resolution",
+          "type": "COMBO",
+          "widget": {
+            "name": "resolution"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "coarse_mesh_axes",
+          "name": "coarse_mesh_axes",
+          "type": "COMBO",
+          "widget": {
+            "name": "coarse_mesh_axes"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "output_frame",
+          "name": "output_frame",
+          "type": "COMBO",
+          "widget": {
+            "name": "output_frame"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "target_faces",
+          "name": "target_faces",
+          "type": "INT",
+          "widget": {
+            "name": "target_faces"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "remove_debris",
+          "name": "remove_debris",
+          "type": "FLOAT",
+          "widget": {
+            "name": "remove_debris"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "mesh",
+          "name": "mesh",
+          "type": "MESH",
+          "links": [
+            209
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Hi3DRefineMesh"
+      },
+      "widgets_values": [
+        "1024",
+        25,
+        0,
+        "fixed",
+        "X/Z swapped (native Hunyuan3D VoxelToMesh)",
+        "match input",
+        -1,
+        0.005,
+        "heun"
+      ],
+      "widgets_values_named": {
+        "resolution": "1024",
+        "steps": 25,
+        "seed": 0,
+        "control_after_generate": "fixed",
+        "coarse_mesh_axes": "X/Z swapped (native Hunyuan3D VoxelToMesh)",
+        "output_frame": "match input",
+        "target_faces": -1,
+        "remove_debris": 0.005,
+        "scheduler": "heun"
+      }
+    },
+    {
+      "id": 104,
+      "type": "MeshToFile3D",
+      "pos": [
+        1800,
+        60
+      ],
+      "size": [
+        219.206640625,
+        26
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "mesh",
+          "name": "mesh",
+          "type": "MESH",
+          "link": 209
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model_3d",
+          "name": "model_3d",
+          "type": "FILE_3D_GLB",
+          "links": [
+            210
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MeshToFile3D"
+      }
+    },
+    {
+      "id": 105,
+      "type": "Save3DAdvanced",
+      "pos": [
+        1800,
+        140
+      ],
+      "size": [
+        700,
+        700
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model_3d",
+          "name": "model_3d",
+          "type": "FILE_3D_GLB,FILE_3D_GLTF,FILE_3D_FBX,FILE_3D_OBJ,FILE_3D_STL,FILE_3D_USDZ,FILE_3D",
+          "link": 210
+        },
+        {
+          "localized_name": "model_3d_info",
+          "name": "model_3d_info",
+          "shape": 7,
+          "type": "LOAD3D_MODEL_INFO",
+          "link": null
+        },
+        {
+          "localized_name": "camera_info",
+          "name": "camera_info",
+          "shape": 7,
+          "type": "LOAD3D_CAMERA",
+          "link": null
+        },
+        {
+          "localized_name": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "viewport_state",
+          "name": "viewport_state",
+          "type": "LOAD_3D",
+          "widget": {
+            "name": "viewport_state"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model_3d",
+          "name": "model_3d",
+          "type": "FILE_3D",
+          "links": null
+        },
+        {
+          "localized_name": "model_3d_info",
+          "name": "model_3d_info",
+          "type": "LOAD3D_MODEL_INFO",
+          "links": null
+        },
+        {
+          "localized_name": "camera_info",
+          "name": "camera_info",
+          "type": "LOAD3D_CAMERA",
+          "links": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "3d/Hi3D",
+        "",
+        1024,
+        1024
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "3d/Hi3D",
+        "viewport_state": "",
+        "width": 1024,
+        "height": 1024
+      }
+    },
+    {
+      "id": 106,
+      "type": "MarkdownNote",
+      "pos": [
+        620,
+        760
+      ],
+      "size": [
+        700,
+        520
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## Hi3D models (download them yourself)\n\n| File | Folder |\n| --- | --- |\n| Hi3D `transformer_512/model.safetensors` + `config.json` | `models/diffusion_models/hi3d/transformer_512/` |\n| Hi3D `transformer_1024/model.safetensors` + `config.json` | `models/diffusion_models/hi3d/transformer_1024/` |\n| Hi3D `vae/model.safetensors` + `config.json` | `models/vae/hi3d/` |\n| DINOv2-large `model.safetensors` (facebook/dinov2-large) | `models/clip_vision/dinov2-large/` |\n| CLIP ViT-L/14 `model.safetensors` (openai/clip-vit-large-patch14) | `models/clip_vision/clip-vit-large-patch14/` |\n\nHi3D files: https://huggingface.co/hi3d-official/Hi3Dv1.0 (Hi3D Open License 1.0).\nAny folder and file name works; pick the files in the loaders.\n\n**Resolution**: 512 = 1 pass, 1024 = 2 passes (default), 1536 = 3 passes (data-center GPUs).\nUse fp8 weight_dtype on the transformer loaders to save VRAM.\n\nThe coarse mesh comes from ComfyUI's native Hunyuan3D 2.0 subgraph (checkpoint hunyuan3d-dit-v2_fp16.safetensors in models/checkpoints, or Hunyuan3D-2mini as in the Hi3D release demo). Native Hunyuan3D meshes have X and Z swapped, so **coarse_mesh_axes** is set accordingly."
+      ],
+      "widgets_values_named": {
+        "text": "## Hi3D models (download them yourself)\n\n| File | Folder |\n| --- | --- |\n| Hi3D `transformer_512/model.safetensors` + `config.json` | `models/diffusion_models/hi3d/transformer_512/` |\n| Hi3D `transformer_1024/model.safetensors` + `config.json` | `models/diffusion_models/hi3d/transformer_1024/` |\n| Hi3D `vae/model.safetensors` + `config.json` | `models/vae/hi3d/` |\n| DINOv2-large `model.safetensors` (facebook/dinov2-large) | `models/clip_vision/dinov2-large/` |\n| CLIP ViT-L/14 `model.safetensors` (openai/clip-vit-large-patch14) | `models/clip_vision/clip-vit-large-patch14/` |\n\nHi3D files: https://huggingface.co/hi3d-official/Hi3Dv1.0 (Hi3D Open License 1.0).\nAny folder and file name works; pick the files in the loaders.\n\n**Resolution**: 512 = 1 pass, 1024 = 2 passes (default), 1536 = 3 passes (data-center GPUs).\nUse fp8 weight_dtype on the transformer loaders to save VRAM.\n\nThe coarse mesh comes from ComfyUI's native Hunyuan3D 2.0 subgraph (checkpoint hunyuan3d-dit-v2_fp16.safetensors in models/checkpoints, or Hunyuan3D-2mini as in the Hi3D release demo). Native Hunyuan3D meshes have X and Z swapped, so **coarse_mesh_axes** is set accordingly."
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      180,
+      56,
+      0,
+      91,
+      0,
+      "IMAGE"
+    ],
+    [
+      195,
+      92,
+      0,
+      93,
+      0,
+      "BACKGROUND_REMOVAL"
+    ],
+    [
+      196,
+      56,
+      0,
+      93,
+      1,
+      "IMAGE"
+    ],
+    [
+      197,
+      91,
+      0,
+      94,
+      0,
+      "MESH"
+    ],
+    [
+      198,
+      94,
+      0,
+      95,
+      0,
+      "FILE_3D_GLB"
+    ],
+    [
+      199,
+      96,
+      0,
+      98,
+      0,
+      "CLIP_VISION"
+    ],
+    [
+      200,
+      97,
+      0,
+      98,
+      1,
+      "CLIP_VISION"
+    ],
+    [
+      201,
+      56,
+      0,
+      98,
+      2,
+      "IMAGE"
+    ],
+    [
+      202,
+      93,
+      0,
+      98,
+      3,
+      "MASK"
+    ],
+    [
+      203,
+      98,
+      1,
+      99,
+      0,
+      "IMAGE"
+    ],
+    [
+      204,
+      100,
+      0,
+      103,
+      0,
+      "HI3D_TRANSFORMER"
+    ],
+    [
+      205,
+      102,
+      0,
+      103,
+      1,
+      "HI3D_VAE"
+    ],
+    [
+      206,
+      98,
+      0,
+      103,
+      2,
+      "HI3D_CONDITIONING"
+    ],
+    [
+      207,
+      91,
+      0,
+      103,
+      3,
+      "MESH"
+    ],
+    [
+      208,
+      101,
+      0,
+      103,
+      4,
+      "HI3D_TRANSFORMER"
+    ],
+    [
+      209,
+      103,
+      0,
+      104,
+      0,
+      "MESH"
+    ],
+    [
+      210,
+      104,
+      0,
+      105,
+      0,
+      "FILE_3D_GLB"
+    ]
+  ],
+  "groups": [],
+  "definitions": {
+    "subgraphs": [
+      {
+        "id": "d6c8fbe5-c16d-4062-bbce-4d3c0249bc10",
+        "version": 1,
+        "state": {
+          "lastGroupId": 2,
+          "lastNodeId": 106,
+          "lastLinkId": 210,
+          "lastRerouteId": 0
+        },
+        "revision": 0,
+        "config": {},
+        "name": "Image to Model (Hunyuan3D 2.0)",
+        "inputNode": {
+          "id": -10,
+          "bounding": [
+            -800,
+            220,
+            189.65625,
+            288
+          ]
+        },
+        "outputNode": {
+          "id": -20,
+          "bounding": [
+            1726,
+            203,
+            128,
+            68
+          ]
+        },
+        "inputs": [
+          {
+            "id": "27921279-0ec2-41bb-819d-29888da0dc62",
+            "name": "image",
+            "type": "IMAGE",
+            "linkIds": [
+              145
+            ],
+            "localized_name": "image",
+            "label": "image",
+            "pos": [
+              -634.34375,
+              244
+            ]
+          },
+          {
+            "id": "06dfcf38-25b0-4494-843f-3c2fdfbd93d2",
+            "name": "shift",
+            "type": "FLOAT",
+            "linkIds": [
+              183
+            ],
+            "label": "model_shift",
+            "pos": [
+              -634.34375,
+              264
+            ]
+          },
+          {
+            "id": "1f49ebc5-7136-4640-82ad-f2125ecb6875",
+            "name": "sampling",
+            "type": "COMBO",
+            "linkIds": [
+              184
+            ],
+            "label": "model_sampling",
+            "pos": [
+              -634.34375,
+              284
+            ]
+          },
+          {
+            "id": "48f6bdc6-8d94-4e6c-aa6b-860bec44405e",
+            "name": "resolution",
+            "type": "INT",
+            "linkIds": [
+              185
+            ],
+            "label": "latent_resolution",
+            "pos": [
+              -634.34375,
+              304
+            ]
+          },
+          {
+            "id": "fcb1f534-5e20-4f70-995b-11b188d65086",
+            "name": "steps",
+            "type": "INT",
+            "linkIds": [
+              186
+            ],
+            "pos": [
+              -634.34375,
+              324
+            ]
+          },
+          {
+            "id": "64096b6b-30f5-4a52-b109-a3fafa284745",
+            "name": "cfg",
+            "type": "FLOAT",
+            "linkIds": [
+              187
+            ],
+            "pos": [
+              -634.34375,
+              344
+            ]
+          },
+          {
+            "id": "86f75e69-4d35-41f9-b3f4-f4eafde6471d",
+            "name": "seed",
+            "type": "INT",
+            "linkIds": [
+              188
+            ],
+            "pos": [
+              -634.34375,
+              364
+            ]
+          },
+          {
+            "id": "f4e9f0e9-b953-4d54-af78-1817025f4ac0",
+            "name": "sampler_name",
+            "type": "COMBO",
+            "linkIds": [
+              189
+            ],
+            "pos": [
+              -634.34375,
+              384
+            ]
+          },
+          {
+            "id": "e633361f-d98a-48a7-945a-33e91fb4e815",
+            "name": "scheduler",
+            "type": "COMBO",
+            "linkIds": [
+              191
+            ],
+            "pos": [
+              -634.34375,
+              404
+            ]
+          },
+          {
+            "id": "df049ea7-8a89-417b-bec7-b86e7069c1d9",
+            "name": "algorithm",
+            "type": "COMBO",
+            "linkIds": [
+              192
+            ],
+            "label": "voxel_to_mesh_algorithm",
+            "pos": [
+              -634.34375,
+              424
+            ]
+          },
+          {
+            "id": "d2c95dae-ea19-4ade-a511-a5012c59fc04",
+            "name": "threshold",
+            "type": "FLOAT",
+            "linkIds": [
+              193
+            ],
+            "label": "voxel_to_mesh_threshold",
+            "pos": [
+              -634.34375,
+              444
+            ]
+          },
+          {
+            "id": "f162d623-5c10-4c3f-832b-a0cd4817b690",
+            "name": "ckpt_name",
+            "type": "COMBO",
+            "linkIds": [
+              194
+            ],
+            "pos": [
+              -634.34375,
+              464
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "99e71f0a-232f-4b5c-983c-9e4d2f770ddb",
+            "name": "MESH",
+            "type": "MESH",
+            "linkIds": [
+              168
+            ],
+            "localized_name": "MESH",
+            "pos": [
+              1750,
+              227
+            ]
+          }
+        ],
+        "widgets": [],
+        "nodes": [
+          {
+            "id": 3,
+            "type": "KSampler",
+            "pos": [
+              660,
+              70
+            ],
+            "size": [
+              320,
+              270
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "label": "model",
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 156
+              },
+              {
+                "label": "positive",
+                "localized_name": "positive",
+                "name": "positive",
+                "type": "CONDITIONING",
+                "link": 165
+              },
+              {
+                "label": "negative",
+                "localized_name": "negative",
+                "name": "negative",
+                "type": "CONDITIONING",
+                "link": 166
+              },
+              {
+                "label": "latent_image",
+                "localized_name": "latent_image",
+                "name": "latent_image",
+                "type": "LATENT",
+                "link": 143
+              },
+              {
+                "localized_name": "seed",
+                "name": "seed",
+                "type": "INT",
+                "widget": {
+                  "name": "seed"
+                },
+                "link": 188
+              },
+              {
+                "localized_name": "steps",
+                "name": "steps",
+                "type": "INT",
+                "widget": {
+                  "name": "steps"
+                },
+                "link": 186
+              },
+              {
+                "localized_name": "cfg",
+                "name": "cfg",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "cfg"
+                },
+                "link": 187
+              },
+              {
+                "localized_name": "sampler_name",
+                "name": "sampler_name",
+                "type": "COMBO",
+                "widget": {
+                  "name": "sampler_name"
+                },
+                "link": 189
+              },
+              {
+                "localized_name": "scheduler",
+                "name": "scheduler",
+                "type": "COMBO",
+                "widget": {
+                  "name": "scheduler"
+                },
+                "link": 191
+              },
+              {
+                "localized_name": "denoise",
+                "name": "denoise",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "denoise"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "label": "LATENT",
+                "localized_name": "LATENT",
+                "name": "LATENT",
+                "type": "LATENT",
+                "slot_index": 0,
+                "links": [
+                  130
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "KSampler",
+              "cnr_id": "comfy-core",
+              "ver": "0.3.43"
+            },
+            "widgets_values": [
+              242832339647017,
+              "randomize",
+              20,
+              8,
+              "euler",
+              "normal",
+              1
+            ],
+            "widgets_values_named": {
+              "seed": 242832339647017,
+              "control_after_generate": "randomize",
+              "steps": 20,
+              "cfg": 8,
+              "sampler_name": "euler",
+              "scheduler": "normal",
+              "denoise": 1
+            }
+          },
+          {
+            "id": 81,
+            "type": "VoxelToMesh",
+            "pos": [
+              1400,
+              70
+            ],
+            "size": [
+              270,
+              90
+            ],
+            "flags": {},
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "voxel",
+                "name": "voxel",
+                "type": "VOXEL",
+                "link": 167
+              },
+              {
+                "localized_name": "algorithm",
+                "name": "algorithm",
+                "type": "COMBO",
+                "widget": {
+                  "name": "algorithm"
+                },
+                "link": 192
+              },
+              {
+                "localized_name": "threshold",
+                "name": "threshold",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "threshold"
+                },
+                "link": 193
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "MESH",
+                "name": "MESH",
+                "type": "MESH",
+                "links": [
+                  168
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VoxelToMesh",
+              "cnr_id": "comfy-core",
+              "ver": "0.3.43"
+            },
+            "widgets_values": [
+              "surface net",
+              0.6
+            ],
+            "widgets_values_named": {
+              "algorithm": "surface net",
+              "threshold": 0.6
+            }
+          },
+          {
+            "id": 80,
+            "type": "Hunyuan3Dv2Conditioning",
+            "pos": [
+              310,
+              70
+            ],
+            "size": [
+              310,
+              50
+            ],
+            "flags": {},
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "clip_vision_output",
+                "name": "clip_vision_output",
+                "type": "CLIP_VISION_OUTPUT",
+                "link": 164
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "positive",
+                "name": "positive",
+                "type": "CONDITIONING",
+                "slot_index": 0,
+                "links": [
+                  165
+                ]
+              },
+              {
+                "localized_name": "negative",
+                "name": "negative",
+                "type": "CONDITIONING",
+                "slot_index": 1,
+                "links": [
+                  166
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "Hunyuan3Dv2Conditioning",
+              "cnr_id": "comfy-core",
+              "ver": "0.3.43"
+            }
+          },
+          {
+            "id": 61,
+            "type": "VAEDecodeHunyuan3D",
+            "pos": [
+              1030,
+              70
+            ],
+            "size": [
+              320,
+              110
+            ],
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+              {
+                "label": "samples",
+                "localized_name": "samples",
+                "name": "samples",
+                "type": "LATENT",
+                "link": 130
+              },
+              {
+                "label": "vae",
+                "localized_name": "vae",
+                "name": "vae",
+                "type": "VAE",
+                "link": 158
+              },
+              {
+                "localized_name": "num_chunks",
+                "name": "num_chunks",
+                "type": "INT",
+                "widget": {
+                  "name": "num_chunks"
+                },
+                "link": null
+              },
+              {
+                "localized_name": "octree_resolution",
+                "name": "octree_resolution",
+                "type": "INT",
+                "widget": {
+                  "name": "octree_resolution"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "label": "VOXEL",
+                "localized_name": "VOXEL",
+                "name": "VOXEL",
+                "type": "VOXEL",
+                "slot_index": 0,
+                "links": [
+                  167
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAEDecodeHunyuan3D",
+              "cnr_id": "comfy-core",
+              "ver": "0.3.43"
+            },
+            "widgets_values": [
+              8000,
+              256
+            ],
+            "widgets_values_named": {
+              "num_chunks": 8000,
+              "octree_resolution": 256
+            }
+          },
+          {
+            "id": 51,
+            "type": "CLIPVisionEncode",
+            "pos": [
+              20,
+              260
+            ],
+            "size": [
+              260,
+              80
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [
+              {
+                "label": "clip_vision",
+                "localized_name": "clip_vision",
+                "name": "clip_vision",
+                "type": "CLIP_VISION",
+                "link": 111
+              },
+              {
+                "label": "image",
+                "localized_name": "image",
+                "name": "image",
+                "type": "IMAGE",
+                "link": 145
+              },
+              {
+                "localized_name": "crop",
+                "name": "crop",
+                "type": "COMBO",
+                "widget": {
+                  "name": "crop"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "label": "CLIP_VISION_OUTPUT",
+                "localized_name": "CLIP_VISION_OUTPUT",
+                "name": "CLIP_VISION_OUTPUT",
+                "type": "CLIP_VISION_OUTPUT",
+                "slot_index": 0,
+                "links": [
+                  164
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "CLIPVisionEncode",
+              "cnr_id": "comfy-core",
+              "ver": "0.3.43"
+            },
+            "widgets_values": [
+              "center"
+            ],
+            "widgets_values_named": {
+              "crop": "center"
+            }
+          },
+          {
+            "id": 66,
+            "type": "EmptyLatentHunyuan3Dv2",
+            "pos": [
+              20,
+              430
+            ],
+            "size": [
+              270,
+              90
+            ],
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "resolution",
+                "name": "resolution",
+                "type": "INT",
+                "widget": {
+                  "name": "resolution"
+                },
+                "link": 185
+              },
+              {
+                "localized_name": "batch_size",
+                "name": "batch_size",
+                "type": "INT",
+                "widget": {
+                  "name": "batch_size"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "label": "LATENT",
+                "localized_name": "LATENT",
+                "name": "LATENT",
+                "type": "LATENT",
+                "links": [
+                  143
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "EmptyLatentHunyuan3Dv2",
+              "cnr_id": "comfy-core",
+              "ver": "0.3.43"
+            },
+            "widgets_values": [
+              3072,
+              1
+            ],
+            "widgets_values_named": {
+              "resolution": 3072,
+              "batch_size": 1
+            }
+          },
+          {
+            "id": 70,
+            "type": "ModelSamplingAuraFlow",
+            "pos": [
+              20,
+              60
+            ],
+            "size": [
+              260,
+              90
+            ],
+            "flags": {},
+            "order": 5,
+            "mode": 0,
+            "showAdvanced": true,
+            "inputs": [
+              {
+                "label": "model",
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 155
+              },
+              {
+                "localized_name": "shift",
+                "name": "shift",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "shift"
+                },
+                "link": 183
+              },
+              {
+                "localized_name": "sampling",
+                "name": "sampling",
+                "shape": 7,
+                "type": "COMBO",
+                "widget": {
+                  "name": "sampling"
+                },
+                "link": 184
+              }
+            ],
+            "outputs": [
+              {
+                "label": "MODEL",
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "slot_index": 0,
+                "links": [
+                  156
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ModelSamplingAuraFlow",
+              "cnr_id": "comfy-core",
+              "ver": "0.3.43"
+            },
+            "widgets_values": [
+              1,
+              "flow"
+            ],
+            "widgets_values_named": {
+              "shift": 1,
+              "sampling": "flow"
+            }
+          },
+          {
+            "id": 54,
+            "type": "ImageOnlyCheckpointLoader",
+            "pos": [
+              -400,
+              90
+            ],
+            "size": [
+              370,
+              100
+            ],
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "ckpt_name",
+                "name": "ckpt_name",
+                "type": "COMBO",
+                "widget": {
+                  "name": "ckpt_name"
+                },
+                "link": 194
+              }
+            ],
+            "outputs": [
+              {
+                "label": "MODEL",
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "slot_index": 0,
+                "links": [
+                  155
+                ]
+              },
+              {
+                "label": "CLIP_VISION",
+                "localized_name": "CLIP_VISION",
+                "name": "CLIP_VISION",
+                "type": "CLIP_VISION",
+                "slot_index": 1,
+                "links": [
+                  111
+                ]
+              },
+              {
+                "label": "VAE",
+                "localized_name": "VAE",
+                "name": "VAE",
+                "type": "VAE",
+                "slot_index": 2,
+                "links": [
+                  158
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ImageOnlyCheckpointLoader",
+              "cnr_id": "comfy-core",
+              "ver": "0.3.43",
+              "models": [
+                {
+                  "name": "hunyuan3d-dit-v2_fp16.safetensors",
+                  "url": "https://huggingface.co/Comfy-Org/hunyuan3D_2.0_repackaged/resolve/main/split_files/hunyuan3d-dit-v2_fp16.safetensors",
+                  "directory": "checkpoints"
+                }
+              ]
+            },
+            "widgets_values": [
+              "hunyuan3d-dit-v2_fp16.safetensors"
+            ],
+            "widgets_values_named": {
+              "ckpt_name": "hunyuan3d-dit-v2_fp16.safetensors"
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": 1,
+            "title": "Model",
+            "bounding": [
+              -410,
+              -20,
+              400,
+              300
+            ],
+            "color": "#3f789e",
+            "flags": {}
+          }
+        ],
+        "links": [
+          {
+            "id": 156,
+            "origin_id": 70,
+            "origin_slot": 0,
+            "target_id": 3,
+            "target_slot": 0,
+            "type": "MODEL"
+          },
+          {
+            "id": 165,
+            "origin_id": 80,
+            "origin_slot": 0,
+            "target_id": 3,
+            "target_slot": 1,
+            "type": "CONDITIONING"
+          },
+          {
+            "id": 166,
+            "origin_id": 80,
+            "origin_slot": 1,
+            "target_id": 3,
+            "target_slot": 2,
+            "type": "CONDITIONING"
+          },
+          {
+            "id": 143,
+            "origin_id": 66,
+            "origin_slot": 0,
+            "target_id": 3,
+            "target_slot": 3,
+            "type": "LATENT"
+          },
+          {
+            "id": 167,
+            "origin_id": 61,
+            "origin_slot": 0,
+            "target_id": 81,
+            "target_slot": 0,
+            "type": "VOXEL"
+          },
+          {
+            "id": 164,
+            "origin_id": 51,
+            "origin_slot": 0,
+            "target_id": 80,
+            "target_slot": 0,
+            "type": "CLIP_VISION_OUTPUT"
+          },
+          {
+            "id": 130,
+            "origin_id": 3,
+            "origin_slot": 0,
+            "target_id": 61,
+            "target_slot": 0,
+            "type": "LATENT"
+          },
+          {
+            "id": 158,
+            "origin_id": 54,
+            "origin_slot": 2,
+            "target_id": 61,
+            "target_slot": 1,
+            "type": "VAE"
+          },
+          {
+            "id": 111,
+            "origin_id": 54,
+            "origin_slot": 1,
+            "target_id": 51,
+            "target_slot": 0,
+            "type": "CLIP_VISION"
+          },
+          {
+            "id": 155,
+            "origin_id": 54,
+            "origin_slot": 0,
+            "target_id": 70,
+            "target_slot": 0,
+            "type": "MODEL"
+          },
+          {
+            "id": 145,
+            "origin_id": -10,
+            "origin_slot": 0,
+            "target_id": 51,
+            "target_slot": 1,
+            "type": "IMAGE"
+          },
+          {
+            "id": 168,
+            "origin_id": 81,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 0,
+            "type": "MESH"
+          },
+          {
+            "id": 183,
+            "origin_id": -10,
+            "origin_slot": 1,
+            "target_id": 70,
+            "target_slot": 1,
+            "type": "FLOAT"
+          },
+          {
+            "id": 184,
+            "origin_id": -10,
+            "origin_slot": 2,
+            "target_id": 70,
+            "target_slot": 2,
+            "type": "COMBO"
+          },
+          {
+            "id": 185,
+            "origin_id": -10,
+            "origin_slot": 3,
+            "target_id": 66,
+            "target_slot": 0,
+            "type": "INT"
+          },
+          {
+            "id": 186,
+            "origin_id": -10,
+            "origin_slot": 4,
+            "target_id": 3,
+            "target_slot": 5,
+            "type": "INT"
+          },
+          {
+            "id": 187,
+            "origin_id": -10,
+            "origin_slot": 5,
+            "target_id": 3,
+            "target_slot": 6,
+            "type": "FLOAT"
+          },
+          {
+            "id": 188,
+            "origin_id": -10,
+            "origin_slot": 6,
+            "target_id": 3,
+            "target_slot": 4,
+            "type": "INT"
+          },
+          {
+            "id": 189,
+            "origin_id": -10,
+            "origin_slot": 7,
+            "target_id": 3,
+            "target_slot": 7,
+            "type": "COMBO"
+          },
+          {
+            "id": 191,
+            "origin_id": -10,
+            "origin_slot": 8,
+            "target_id": 3,
+            "target_slot": 8,
+            "type": "COMBO"
+          },
+          {
+            "id": 192,
+            "origin_id": -10,
+            "origin_slot": 9,
+            "target_id": 81,
+            "target_slot": 1,
+            "type": "COMBO"
+          },
+          {
+            "id": 193,
+            "origin_id": -10,
+            "origin_slot": 10,
+            "target_id": 81,
+            "target_slot": 2,
+            "type": "FLOAT"
+          },
+          {
+            "id": 194,
+            "origin_id": -10,
+            "origin_slot": 11,
+            "target_id": 54,
+            "target_slot": 0,
+            "type": "COMBO"
+          }
+        ],
+        "extra": {}
+      }
+    ]
+  },
+  "config": {},
+  "extra": {
+    "frontendVersion": "1.56.3",
+    "node_versions": {
+      "comfy-core": "0.3.35"
+    },
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "ds": {
+      "scale": 0.28,
+      "offset": [
+        3400,
+        700
+      ]
+    }
+  },
+  "version": 0.4
+}
